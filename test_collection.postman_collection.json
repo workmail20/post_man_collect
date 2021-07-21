@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "24872399-f4e9-4bb6-8b56-900a762741c0",
+		"name": "test_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://echo.jsontest.com/key/value/one/two/one1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct response format JSON\", function(){\r",
+							"    pm.response.to.have.jsonBody()\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Check that we have all declared fields\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData).to.have.property(\"one\");\r",
+							"     pm.expect(jsonData).to.have.property(\"key\");\r",
+							"    //pm.expect(jsonData).to.have.property(\"one1\");\r",
+							"   //  pm.expect(jsonData).to.have.property(\"key1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if value isnt NULL\",function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.one11).not.equal(null);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if value isnt empty\",function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.one).not.equal(\"\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if field corresponds to a specific value\",function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.one).to.equal(\"two\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status message is ok\",function(){\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"There is a specific header in the response\",function(){\r",
+							"pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The response has a specific header with a specific value\",function(){\r",
+							"pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie exists\", function(){\r",
+							"    pm.cookies.has(\"__cfduid\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie has value\", function(){\r",
+							"    try{\r",
+							"        var MY_COOKIE = pm.cookies.get(\"__cfduid\");\r",
+							"        console.log(MY_COOKIE);\r",
+							"    } catch(e){\r",
+							"        console.log(\"SOME PROBLEM WITH COOKIE ->\" +e )\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "max-age=0"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not;A Brand\";v=\"99\", \"Microsoft Edge\";v=\"91\", \"Chromium\";v=\"91\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "Upgrade-Insecure-Requests",
+						"value": "1"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.64"
+					},
+					{
+						"key": "Accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "none"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "navigate"
+					},
+					{
+						"key": "Sec-Fetch-User",
+						"value": "?1"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "document"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "uk,en;q=0.9,en-GB;q=0.8,en-US;q=0.7,ru;q=0.6"
+					},
+					{
+						"key": "Cookie",
+						"value": "advanced_ads_pro_server_info=%7B%22vc_cache_reset%22%3A0%7D; wordpress_test_cookie=WP%20Cookie%20check; wordpress_logged_in_31a175b746a1c4b15b28948467f3a5bf=itneed%7C1624801156%7CyGjhze2Psm2zgjfwBDbnnkaGvZmMdR6NZriaBghapNB%7Cdb91b03ff0d336a26b61a6450de8c9eb2590580f5a10e016eaf9e3f7fc14bec1; wp-settings-time-1=1624724981; wp-settings-1=libraryContent%3Dbrowse%26hidetb%3D1%26template_window_vcUIPanelWidth%3D1423%26template_window_vcUIPanelLeft%3D80px%26template_window_vcUIPanelTop%3D76px%26editor%3Dtinymce%26edit_element_vcUIPanelWidth%3D646%26edit_element_vcUIPanelLeft%3D474px%26edit_element_vcUIPanelTop%3D89px%26imgsize%3Dfull%26editor_plain_text_paste_warning%3D2%26align%3Dcenter%26advImgDetails%3Dshow%26urlbutton%3Dfile%26panel_vcUIPanelWidth%3D650%26panel_vcUIPanelLeft%3D791px%26panel_vcUIPanelTop%3D74px%26post_dfw%3Doff%26mfold%3Do%26editor_expand%3Don%26posts_list_mode%3Dlist; MarketGidStorage=%7B%220%22%3A%7B%22svspr%22%3A%22https%3A%2F%2Fit-need.com%2Fmotorola-predstavlyaet-svoj-pervyj-flagmanskij-telefon-moto-g-moto-g100%2F%22%2C%22svsds%22%3A72%2C%22TejndEEDj%22%3A%22Vc23RcG0l%22%7D%2C%22C1084048%22%3A%7B%22page%22%3A4%2C%22time%22%3A1624902803166%7D%2C%22C1084043%22%3A%7B%22page%22%3A4%2C%22time%22%3A1624902803211%7D%2C%22C1084049%22%3A%7B%22page%22%3A4%2C%22time%22%3A1624902803284%7D%2C%22C1084041%22%3A%7B%22page%22%3A4%2C%22time%22%3A1624902803118%7D%7D"
+					}
+				],
+				"url": {
+					"raw": "http://echo.jsontest.com/key/value/one/two/one1",
+					"protocol": "http",
+					"host": [
+						"echo",
+						"jsontest",
+						"com"
+					],
+					"path": [
+						"key",
+						"value",
+						"one",
+						"two",
+						"one1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
